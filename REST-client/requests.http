@@ -1,0 +1,61 @@
+GET https://localhost:5500
+
+###
+
+#Kaffe
+GET https://coffee.alexflipnote.dev/random
+
+###
+
+#Stor katt
+GET http://placekitten.com/1000/1000
+
+###
+
+#Liten katt
+GET http://placekitten.com/200/200
+
+###
+
+#Katt fakta
+GET https://meowfacts.herokuapp.com/
+
+###
+
+#Fredde API
+@apiURL = https://fw-teaching.fi/demo/wdbocms/api/v1/products
+#Alla produkter
+GET {{apiURL}}
+
+###En produkt
+GET {{apiURL}}/1001
+
+###Skapa ny produkt
+POST {{apiURL}}/
+Content-Type: application/json
+
+{
+    "name": "pants",
+    "price": 35
+}
+
+###Ändra namn och pris
+
+PUT {{apiURL}}/1002
+
+{
+    "name": "Fancypants",
+    "price": 60
+}
+
+###Ändra pris
+
+PATCH {{apiURL}}/1003
+
+{
+    "price": 1000
+}
+
+###Delete produkt
+
+DELETE {{apiURL}}/1005
