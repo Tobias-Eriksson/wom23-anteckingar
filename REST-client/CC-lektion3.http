@@ -1,0 +1,27 @@
+@apiURL = http://localhost:3030/notes
+
+###
+
+GET {{apiURL}}
+
+
+### Post request
+
+POST {{apiURL}}
+Content-Type: application/json
+
+{
+    "name": "pants"
+}
+
+### Patch med ID
+PATCH {{apiURL}}/100
+Content-Type: application/json
+
+{
+    "name": "pants",
+    "price": 35
+}
+
+### Delete ID
+DELETE {{apiURL}}/4
