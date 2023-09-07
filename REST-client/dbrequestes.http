@@ -9,7 +9,11 @@ Content-Type: application/json
 }
 
 ###READ
-GET {{apiUrl}}/64f9b0e9e77a64323d94b2e4
+GET {{apiUrl}}/64f9b0f2e77a64323d94b2e7
+Content-Type: application/json
+
+###READALL
+GET {{apiUrl}}/
 Content-Type: application/json
 
 ###UPDATE
