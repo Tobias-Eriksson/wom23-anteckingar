@@ -1,30 +1,56 @@
 const express = require('express')
 const router = express.Router()
+const { PrismaClient } = require('@prisma/client')
+const prisma = new PrismaClient()
+
 
 console.log("Notes")
 
-router.get('/', (req, res) => {
-    console.log("Notes GET")
-    res.send("Notes B)")
-})
+//READ
+router.get('/:id', async (req, res) => {
+    const note = await prisma.notes.findUnique({
+        where: {
+            id: req.params.id,
+        },
 
-router.post('/', (req, res) => {
-    res.send(req.body)
-})
-
-router.patch('/:id', (req, res) => {
-    res.send({
-        msg: 'patch',
-        id: req.body.id,
-        reqBody: req.body
     })
+    res.send({ msg: 'get', reqBody: note })
 })
 
-router.delete('/:id', (req, res) => {
+//UPDATE
+router.patch('/:id', async (req, res) => {
+    const note = await prisma.notes.update({
+        where: {
+            id: req.params.id,
+        },
+        data: {
+            noteText: req.body.text,
+        },
+    })
+    res.send({ msg: 'patch', reqBody: req.body })
+})
+
+//DELETE
+router.delete('/:id', async (req, res) => {
+    const deleteId = await prisma.notes.delete({
+        where: {
+            id: req.params.id,
+        },
+    })
     res.send({
         msg: 'delete',
         id: req.params.id,
     })
+})
+
+//CREATE
+router.post('/', async (req, res) => {
+    const note = await prisma.notes.create({
+        data: {
+            noteText: req.body.text,
+        },
+    })
+    res.send({ msg: 'post', reqBody: req.body })
 })
 
 module.exports = router

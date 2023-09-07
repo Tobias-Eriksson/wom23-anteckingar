@@ -1,0 +1,26 @@
+@apiUrl = http://localhost:3030/notes
+
+###CREATE
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+    "text": "Googooerik gaagaa"
+}
+
+###READ
+GET {{apiUrl}}/64f9b0e9e77a64323d94b2e4
+Content-Type: application/json
+
+###UPDATE
+PATCH {{apiUrl}}/64f9b0e6e77a64323d94b2e3
+Content-Type: application/json
+
+{
+
+    "text": "Googo gaagaa gogo"
+}
+
+###DELETE
+DELETE {{apiUrl}}/64f9a881e3912407ff9fe9b6
+Content-Type: application/json
